@@ -24,24 +24,26 @@ function getLocation() {
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
-///
-var latitude=position.coords.latitude;
-var longitude= position.coords.longitude;
 
-var url= 'https://api.darksky.net/forecast/e2fecf111aed4c8f5511641d5d79c808';
+    var latitude=position.coords.latitude;
+    var longitude= position.coords.longitude;
+    var url= 'https://api.darksky.net/forecast/e2fecf111aed4c8f5511641d5d79c808';
 
-$.getJSON(url + "/" + latitude + "," + longitude + "?callback=?", function(data) {
-  console.log(data);
-});}
-
+    $.getJSON(url + "/" + latitude + "," + longitude + "?callback=?", function(data) {
+    console.log(data.daily);
+    var tempHigh= data.daily.data[0].apparentTemperatureHigh;
+    document.getElementById("javascriptVariables").innerHTML = tempHigh;
+    });
+    }
 </script>
 
+<h1> Weather Data</h1>
 
 
+<div id="javascriptVariables">
+</div>
+
+
+Sources: W3 schools https://www.w3schools.com/html/html5_geolocation.asp
 </body>
 </html>
-
-
-//Sources
-//W3 schools
-//https://www.w3schools.com/html/html5_geolocation.asp
