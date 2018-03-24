@@ -32,15 +32,30 @@ function showPosition(position) {
     $.getJSON(url + "/" + latitude + "," + longitude + "?callback=?", function(data) {
     console.log(data.daily);
     var tempHigh= data.daily.data[0].apparentTemperatureHigh;
-    document.getElementById("javascriptVariables").innerHTML = tempHigh;
+    var tempLow= data.daily.data[0].apparentTemperatureLow;
+    var precipProb= data.daily.data[0].precipProbability;
+    var precipType= data.daily.data[0].precipType;
+    document.getElementById("jsVariable1").innerHTML = tempHigh;
+    document.getElementById("jsVariable2").innerHTML = tempLow;
+    document.getElementById("jsVariable3").innerHTML = precipProb;
+    document.getElementById("jsVariable4").innerHTML = precipType;
     });
     }
 </script>
 
-<h1> Weather Data</h1>
+<h1> Weather Data</h2>
 
-
-<div id="javascriptVariables">
+<h3> High Temperature </h3>
+<div id="jsVariable1">
+</div>
+<h3> Low Temperature </h3>
+<div id="jsVariable2">
+</div>
+<h3> Precipitation Probability </h3>
+<div id="jsVariable3">
+</div>
+<h3> Precipitation Type </h3>
+<div id="jsVariable4">
 </div>
 
 
