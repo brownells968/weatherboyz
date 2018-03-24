@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+///
+var latitude=position.coords.latitude;
+var longitude= position.coords.longitude;
+
+var url= 'https://api.darksky.net/forecast/e2fecf111aed4c8f5511641d5d79c808';
+
+$.getJSON(url + "/" + latitude + "," + longitude + "?callback=?", function(data) {
+  console.log(data);
+});}
+
+</script>
+
+
+
+</body>
+</html>
+
+
+//Sources
+//W3 schools
+//https://www.w3schools.com/html/html5_geolocation.asp
