@@ -26,11 +26,12 @@ function showPosition(position) {
     var longitude= position.coords.longitude;
     var url= 'https://api.darksky.net/forecast/e2fecf111aed4c8f5511641d5d79c808';
     $.getJSON(url + "/" + latitude + "," + longitude + "?callback=?", function(data) {
-    console.log(data.daily);
+    console.log(data.daily)
     var tempHigh= data.daily.data[0].apparentTemperatureHigh;
     var tempLow= data.daily.data[0].apparentTemperatureLow;
     var precipProb= data.daily.data[0].precipProbability;
     var precipType= data.daily.data[0].precipType;
+    var tempMean= (tempHigh*tempLow)/2;
     document.getElementById("jsVariable1").innerHTML = tempHigh;
     document.getElementById("jsVariable2").innerHTML = tempLow;
     document.getElementById("jsVariable3").innerHTML = precipProb;
@@ -38,6 +39,7 @@ function showPosition(position) {
     });
 }
 function clothing(tempMean) {
+    //var tempMean= showPosition.tempMean;
     if (tempMean>100) {
       var clothing = "minimal";
     } else if(75<tempMean<=100) {
@@ -53,6 +55,7 @@ function clothing(tempMean) {
     } else {
       var clothing = "none"
     }
+    document.getElementById("jsVariable5").innerHTML = clothing;
 }
 
 
@@ -71,6 +74,9 @@ function clothing(tempMean) {
 </div>
 <h3> Precipitation Type </h3>
 <div id="jsVariable4">
+</div>
+<h3> Clothing Recommendations </h3>
+<div id="jsVariable5">
 </div>
 
 
