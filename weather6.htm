@@ -5,6 +5,8 @@
   <style>
   body{
     background-color: lavender;
+    border-style: solid;
+    border-color: black;
   }
   h1{
     text-align: center;
@@ -15,6 +17,7 @@
     height: 250px;
   }
   </style>
+
 </head>
 <body>
 
@@ -59,7 +62,6 @@ function showPosition(position) {
 }
 function clothing(tempMean) {
     if (tempMean>100) {
-      var clothing = "minimal";
       document.getElementById("jsVariable5").innerHTML = clothing;
       document.getElementById("image").innerHTML = "<img id='imageContent' src='bikini.jpg'>";
       //return this.clothing;
